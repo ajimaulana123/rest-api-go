@@ -1,0 +1,28 @@
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: be-api
+    runtime: go
+    plan: free
+    buildCommand: go build -ldflags="-s -w" -o server .
+    startCommand: ./server
+    healthCheckPath: /health
+    envVars:
+      - key: GIN_MODE
+        value: release
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SUPABASE_PROJECT_ID
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_DB_PASSWORD
+        sync: false
+      - key: SUPABASE_REGION
+        value: ap-southeast-1
+      - key: SUPABASE_POOLER
+        value: aws-1
+      - key: SUPABASE_DB_MODE
+        value: session
