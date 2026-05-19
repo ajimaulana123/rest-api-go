@@ -1,0 +1,17 @@
+.env
+.env.*
+.git
+.gitignore
+.cursor
+.vscode
+.idea
+*.exe
+/server
+/app
+/bin
+/dist
+node_modules
+worker/node_modules
+scripts
+*.md
+!README.md

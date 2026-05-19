@@ -1,0 +1,24 @@
+name = "be-api"
+main = "src/index.ts"
+compatibility_date = "2025-03-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Non-secret config (secrets via: wrangler secret put <NAME>)
+[vars]
+GIN_MODE = "release"
+SUPABASE_REGION = "ap-southeast-1"
+SUPABASE_POOLER = "aws-1"
+SUPABASE_DB_MODE = "session"
+
+[[containers]]
+class_name = "ApiContainer"
+image = "./Dockerfile"
+max_instances = 3
+
+[[durable_objects.bindings]]
+name = "API_CONTAINER"
+class_name = "ApiContainer"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ApiContainer"]

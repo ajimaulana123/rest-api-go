@@ -29,3 +29,8 @@ Thumbs.db
 .vscode/
 *.swp
 .cursor/
+
+# Node / Cloudflare Worker
+node_modules/
+.wrangler/
+.dev.vars
